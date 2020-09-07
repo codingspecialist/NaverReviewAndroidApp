@@ -24,6 +24,7 @@ public class ProductViewModel extends AndroidViewModel {
     private MutableLiveData<List<Product>> mtProduct
             = new MutableLiveData<>();
 
+
     public ProductViewModel(@NonNull Application application) {
         super(application);
     }

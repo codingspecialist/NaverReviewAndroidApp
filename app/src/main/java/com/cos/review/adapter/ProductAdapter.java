@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cos.review.MainActivity;
 import com.cos.review.R;
 import com.cos.review.databinding.ContainerItemBinding;
 import com.cos.review.databinding.MenuItemBinding;
 import com.cos.review.model.Product;
 import com.cos.review.model.SearchKeyword;
+import com.cos.review.viewmodel.ProductViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
 
     private static final String TAG = "ProductAdapter";
     private List<Product> products = new ArrayList<>();
+    private MainActivity mContext;
+
+    public ProductAdapter(MainActivity mContext) {
+        this.mContext = mContext;
+    }
 
     public void setProducts(List<Product> products){
         this.products = products;
@@ -53,6 +60,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         Product product = products.get(position);
         holder.containerItemBinding.setProduct(product); // 레이아웃 xml에 오브젝트 주입
+        holder.containerItemBinding.setMainActivity(mContext);
     }
 
     
